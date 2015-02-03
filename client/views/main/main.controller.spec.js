@@ -20,8 +20,20 @@ describe('Testing controller: mainCtrl', function(){
         expect(true).toEqual(true);
     });
 
-<<<<<<< HEAD
+    it('should show dasd weight: 45', function(){
+        scope.data = [{
+            text: "asda",
+            number: 4
+        },{
+            text: "dasd",
+            number: 45
+        },{
+            text: "daasdsasd",
+            number: 5
+        }];
+        console.log(scope.data);
+
+       expect(scope.getLargest()).toEqual('dasd weight: 45')
+    });
+
 });
-=======
-});
->>>>>>> origin/master

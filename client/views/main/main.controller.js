@@ -28,6 +28,22 @@ angular.module("appModule")
             }
         };
 
+        $scope.getLargest = function(){
+            if($scope.data.length == 0){
+                return "No pets entered";
+            }else{
+                var largest = $scope.data[0].number;
+                var name = $scope.data[0].text;
+                angular.forEach($scope.data, function(item){
+                    if(item.number > largest){
+                        largest = item.number;
+                        name = item.text;
+                    }
+                });
+                return name+" weight: "+largest;
+            }
+        }
+
         $scope.removeData = function(index){
             $http.delete('/api/pets/' + $scope.data[index]._id).success(function(){
                 $scope.getPets();
