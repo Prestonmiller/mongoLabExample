@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>GPA Calculator</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+
+    <!-- Loading Javascript Stuff -->
+    <script type="text/javascript" src="javascript/clientJavascript.js"></script>
+    <script type="text/javascript" src="angularjs/angular.js"></script>
+    <script type="text/javascript" src="javascript/main.controller.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="calcCtrl">
+<div ng-include="'views/navbar.html'"></div>
+<div>{{getMessage()}}<span class="{{color()}}" >{{getGPA()}}</span></div>
+<form ng-submit="makeGPA()">
+    <input ng-model="grade1" type="text" size="50" placeholder="A"><input ng-model="credits1" type="text" size="50" placeholder="5"><br/>
+    <input ng-model="grade2" type="text" size="50" placeholder="B"><input ng-model="credits2" type="text" size="50" placeholder="4"><br/>
+    <input ng-model="grade3" type="text" size="50" placeholder="C"><input ng-model="credits3" type="text" size="50" placeholder="3">
+    <input type="submit" value="submit" class="btn btn-primary">
+</form>
+</body>
+</html>
