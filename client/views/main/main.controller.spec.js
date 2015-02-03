@@ -31,9 +31,13 @@ describe('Testing controller: mainCtrl', function(){
             text: "daasdsasd",
             number: 5
         }];
-        console.log(scope.data);
+        //console.log(scope.data);
 
        expect(scope.getLargest()).toEqual('dasd weight: 45')
     });
 
+    it('should show No pets entered', function(){
+
+        expect(scope.getLargest()).toEqual('No pets entered');
+    });
 });
