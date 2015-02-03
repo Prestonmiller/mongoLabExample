@@ -20,4 +20,8 @@ describe('Testing controller: mainCtrl', function(){
         expect(true).toEqual(true);
     });
 
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> origin/master
