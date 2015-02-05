@@ -1,13 +1,13 @@
 'use strict';
 
-console.log("main.js loaded!");
+console.log("calc.js loaded!");
 
 angular.module("appModule")
     .config(function($stateProvider){
         $stateProvider
-            .state('main', {
-                url: '/',
-                templateUrl: 'views/main/main.html',
-                controller: 'mainCtrl'
+            .state('calc', {
+                url: '/calc',
+                templateUrl: 'views/calc/calc.html',
+                controller: 'calcCtrl'
             });
     });

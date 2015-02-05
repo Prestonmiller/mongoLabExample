@@ -12,7 +12,7 @@ angular.module("appModule")
         {text: "Home", link: '/'},
         {text: "About", link: '/about'},
         {text: "404 Page", link: '/wefwrtbertbeb'},
-        {test: "GPA Calculator", link: "/calc"}
+        {text: "GPA Calculator", link: "/calc"}
     ];
 
     $scope.isActive = function(route){
