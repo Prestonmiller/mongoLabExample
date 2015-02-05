@@ -52,24 +52,40 @@ describe('Testing controller: calcCtrl', function(){
     it("should be 4",function() {
         scope.grade = scope.name = "B";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "B"}
+        ];
+        scope.makeGPA();
         expect(scope.calc()).toBe(3.0);
     });
 
     it("should be 3",function() {
         scope.grade = scope.name = "C";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "C"}
+        ];
+        scope.makeGPA();
         expect(scope.calc()).toBe(2.0);
     });
 
     it("should be 2",function() {
         scope.grade = scope.name =  "D";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "D"}
+        ];
+        scope.makeGPA();
         expect(scope.calc()).toBe(1.0);
     });
 
     it("should be 1",function() {
         scope.grade = scope.name = "F";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "F"}
+        ];
+        scope.makeGPA();
         expect(scope.calc()).toBe(0.0);
     });
 
@@ -113,12 +129,18 @@ describe('Testing controller: calcCtrl', function(){
     it("should be green", function(){
         scope.grade = scope.name = "A";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "A"}
+        ];
         scope.makeGPA();
         expect(scope.color()).toBe("good");
     });
     it("should be yellow", function(){
         scope.grade = scope.name ="C";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "C"}
+        ];
         scope.makeGPA();
         expect(scope.color()).toBe("okay");
     });
@@ -126,6 +148,9 @@ describe('Testing controller: calcCtrl', function(){
     it("should be red", function(){
         scope.grade = scope.name ="F";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "F"}
+        ];
         scope.makeGPA();
         expect(scope.color()).toBe("bad");
     });
@@ -133,6 +158,9 @@ describe('Testing controller: calcCtrl', function(){
     it("should be 4.0", function(){
         scope.grade = scope.name =  "A";
         scope.credits= 5;
+        scope.data = [
+            {credit: 5, grade: "A"}
+        ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("4!");
     });
@@ -140,6 +168,9 @@ describe('Testing controller: calcCtrl', function(){
     it("should be 3.0", function(){
         scope.grade = scope.name =  "B";
         scope.credits= 5;
+        scope.data = [
+            {credit: 5, grade: "B"}
+        ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("3!");
     });
@@ -147,6 +178,9 @@ describe('Testing controller: calcCtrl', function(){
     it("should be 2.0", function(){
         scope.grade = scope.name =  "C";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "C"}
+        ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("2!");
     });
@@ -154,6 +188,9 @@ describe('Testing controller: calcCtrl', function(){
     it("should be 1.0", function(){
         scope.grade = scope.name =  "D";
         scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "D"}
+        ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("1!");
     });
@@ -161,13 +198,9 @@ describe('Testing controller: calcCtrl', function(){
     it("should be 0.0", function(){
         scope.grade = scope.name = "F";
         scope.credits =  5;
-        scope.makeGPA();
-        expect(scope.getGPA()).toBe("0!");
-    });
-
-    it("should be 0.0", function(){
-        scope.grade = scope.name = "F";
-        scope.credits = 5;
+        scope.data = [
+            {credit: 5, grade: "F"}
+        ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("0!");
     });
@@ -177,8 +210,8 @@ describe('Testing controller: calcCtrl', function(){
             {credit: 5, grade: "A"}
         ];
         scope.processGrades();
-        scope.calc();
-        expect(scope.gpa).toBe(4);
+        console.log(scope.numerator+" "+scope.denomonator);
+        expect(scope.calc()).toBe(4);
     });
 
 });

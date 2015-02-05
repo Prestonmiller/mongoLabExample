@@ -28,6 +28,7 @@ angular.module("appModule")
             $scope.getGPA();
         });
         $scope.message = "Your GPA is: ";
+        $scope.processGrades();
         $scope.gpa = $scope.calc();
 
     };
@@ -39,8 +40,11 @@ angular.module("appModule")
     };
 
     $scope.processGrades = function(){
-
-    }
+        angular.forEach($scope.data,function(item){
+            $scope.numerator += Number(item.credit*$scope.letterToNumber(item.grade));
+            $scope.denomonator += Number(item.credit);
+        });
+    };
 
     $scope.isEmpty = function(item){
         return item.length == 0;
@@ -72,7 +76,7 @@ angular.module("appModule")
     };
 
     $scope.calc = function(){
-        return (Number($scope.letterToNumber($scope.grade1))*Number($scope.credits1)+Number($scope.letterToNumber($scope.grade2))*Number($scope.credits2)+Number($scope.letterToNumber($scope.grade3))*Number($scope.credits3))/(Number($scope.credits1)+Number($scope.credits2)+Number($scope.credits3));
+        return (Number($scope.numerator))/(Number($scope.denomonator));
     };
 
     $scope.letterToNumber = function(course) {
