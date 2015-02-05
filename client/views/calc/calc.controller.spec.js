@@ -207,7 +207,10 @@ describe('Testing controller: calcCtrl', function(){
 
     it("should be 4.0", function(){
         scope.data = [
-            {credit: 5, grade: "A"}
+            {credit: 5, grade: "A"},
+            {credit: 6, grade: "A"},
+            {credit: 2, grade: "A"},
+            {credit: 4, grade: "A"}
         ];
         scope.processGrades();
         console.log(scope.numerator+" "+scope.denomonator);
