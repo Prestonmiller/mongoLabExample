@@ -4,30 +4,43 @@ angular.module("appModule")
     .controller('calcCtrl', function($scope, $http){
     console.log("controller loaded!");
 
-    $scope.grade1 = "";
-    $scope.grade2 = "";
-    $scope.grade3 = "";
-    $scope.credits1 = "";
-    $scope.credits2 = "";
-    $scope.credits3 = "";
+    $scope.grade = "";
+    $scope.credits = "";
+    $scope.name = "";
     $scope.gpa = "";
     $scope.message = "";
+    $scope.numerator = 0;
+    $scope.denomonator = 0;
+    $scope.data = [];
 
     $scope.makeGPA = function(){
-        if($scope.isEmpty($scope.grade1) || $scope.isEmpty($scope.grade2) || $scope.isEmpty($scope.grade3) || $scope.isEmpty($scope.credits1) || $scope.isEmpty($scope.credits2) || $scope.isEmpty($scope.credits3)){
+        if($scope.isEmpty($scope.grade) || $scope.isEmpty($scope.credits) || $scope.isEmpty($scope.name)){
             $scope.message = "An input is empty";
             $scope.gpa = "";
             return;
         }
-        if (!$scope.isLetter($scope.grade1) || !$scope.isLetter($scope.grade2) || !$scope.isLetter($scope.grade3) || !$scope.isNumeric($scope.credits1) || !$scope.isNumeric($scope.credits2) || !$scope.isNumeric($scope.credits3)) {
+        if (!$scope.isLetter($scope.grade) || !$scope.isNumeric($scope.credits)) {
             $scope.message = "There was an error.";
             $scope.gpa = "";
             return;
         }
+        $http.post('api/GPA', {name: $scope.name, credit: $scope.credit, grade: $scope.grade}).success(function(){
+            $scope.getGPA();
+        });
         $scope.message = "Your GPA is: ";
         $scope.gpa = $scope.calc();
 
     };
+
+    $scope.getGrades = function(){
+        $http.get('api/GPA').success(function(GPAs) {
+
+        });
+    };
+
+    $scope.processGrades = function(){
+
+    }
 
     $scope.isEmpty = function(item){
         return item.length == 0;

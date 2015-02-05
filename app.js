@@ -31,6 +31,7 @@ app.use(express.static('client'));
 // Connect to local Mongo Database. This should work on the lab machines, if it doesn't we need to investigate...
 mongoose.connect('mongodb://127.0.0.1:27017/pets');
 
+
 //==== Misc ===================================================================
 
 // define options that Express will use when sending files to the client (using res.sendFile)
@@ -44,6 +45,7 @@ var options = {
 
 // API Routes
 app.use('/api/pets', require('./api/pets'));
+app.use('/api/GPA', require('./api/GPA'));
 
 // Non-API routes
 app.get('/*', function(req, res){
