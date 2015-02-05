@@ -13,36 +13,66 @@ angular.module("appModule")
     $scope.denomonator = 0;
     $scope.data = [];
 
-    $scope.makeGPA = function(){
-        if($scope.isEmpty($scope.grade) || $scope.isEmpty($scope.credits) || $scope.isEmpty($scope.name)){
-            $scope.message = "An input is empty";
-            $scope.gpa = "";
+    $scope.makeGPA = function() {
+        if(!$scope.validate()){
             return;
         }
-        if (!$scope.isLetter($scope.grade) || !$scope.isNumeric($scope.credits)) {
-            $scope.message = "There was an error.";
-            $scope.gpa = "";
-            return;
+        if($scope.validate()) {
+            var valid = false;
+            $http.post('api/GPA', {
+                name: $scope.name,
+                credits: Number($scope.credits),
+                grade: $scope.grade
+            }).success(function (){
+                valid = true;
+            });
+            if(valid){
+                $scope.getGrades();
+            }
+            if($scope.data.length != 0){
+                $scope.makeMessage();
+            }
+
         }
-        $http.post('api/GPA', {name: $scope.name, credit: $scope.credit, grade: $scope.grade}).success(function(){
-            $scope.getGPA();
-        });
-        $scope.message = "Your GPA is: ";
-        $scope.processGrades();
-        $scope.gpa = $scope.calc();
 
     };
+        $scope.makeMessage = function(){
+            $scope.message = "Your GPA is: ";
+            //console.log("asdasd");
+            console.log($scope.data);
+            $scope.processGrades();
+            console.log($scope.numerator + " " + $scope.denomonator);
+            $scope.gpa = $scope.calc();
+        }
+
+    $scope.validate = function(){
+            if ($scope.isEmpty($scope.grade) || $scope.isEmpty($scope.credits) || $scope.isEmpty($scope.name)) {
+                $scope.message = "An input is empty";
+                $scope.gpa = "";
+                return false;
+            }
+            if (!$scope.isLetter($scope.grade) || !$scope.isNumeric($scope.credits)) {
+                $scope.message = "There was an error.";
+                $scope.gpa = "";
+                return false;
+            }
+        return true;
+    }
 
     $scope.getGrades = function(){
         $http.get('api/GPA').success(function(GPAs) {
-
+            //console.log(GPAs);
+            $scope.data =  GPAs;
+            //console.log($scope.data);
         });
     };
 
     $scope.processGrades = function(){
+        console.log($scope.data);
         angular.forEach($scope.data,function(item){
-            $scope.numerator += Number(item.credit*$scope.letterToNumber(item.grade));
-            $scope.denomonator += Number(item.credit);
+            console.log(item.credits+" "+item.grade);
+            $scope.numerator += Number(item.credits*$scope.letterToNumber(item.grade));
+            $scope.denomonator += Number(item.credits);
         });
     };
 
