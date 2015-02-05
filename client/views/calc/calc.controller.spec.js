@@ -214,4 +214,38 @@ describe('Testing controller: calcCtrl', function(){
         expect(scope.calc()).toBe(4);
     });
 
+    it("should be 3.0", function(){
+        scope.data = [
+            {credit: 5, grade: "B"}
+        ];
+        scope.processGrades();
+        console.log(scope.numerator+" "+scope.denomonator);
+        expect(scope.calc()).toBe(3);
+    });
+
+    it("should be 2.0", function(){
+        scope.data = [
+            {credit: 5, grade: "C"}
+        ];
+        scope.processGrades();
+        console.log(scope.numerator+" "+scope.denomonator);
+        expect(scope.calc()).toBe(2);
+    });
+    it("should be 1.0", function(){
+        scope.data = [
+            {credit: 5, grade: "D"}
+        ];
+        scope.processGrades();
+        console.log(scope.numerator+" "+scope.denomonator);
+        expect(scope.calc()).toBe(1);
+    });
+    it("should be 0.0", function(){
+        scope.data = [
+            {credit: 5, grade: "F"}
+        ];
+        scope.processGrades();
+        console.log(scope.numerator+" "+scope.denomonator);
+        expect(scope.calc()).toBe(0);
+    });
+
 });
