@@ -18,17 +18,8 @@ angular.module("appModule")
             return;
         }
         if($scope.validate()) {
-            var valid = false;
-            $http.post('api/GPA', {
-                name: $scope.name,
-                credits: Number($scope.credits),
-                grade: $scope.grade
-            }).success(function (){
-                valid = true;
-            });
-            if(valid){
-                $scope.getGrades();
-            }
+
+            var data =  $scope.submit();
             if($scope.data.length != 0){
                 $scope.makeMessage();
             }
@@ -36,6 +27,17 @@ angular.module("appModule")
         }
 
     };
+
+        $scope.submit = function(){
+            $http.post('api/GPA', {
+                name: $scope.name,
+                credits: Number($scope.credits),
+                grade: $scope.grade
+            }).success(function (){
+                return $scope.getGrades();
+            });
+            return $scope.data;
+        }
         $scope.makeMessage = function(){
             $scope.message = "Your GPA is: ";
             //console.log("asdasd");

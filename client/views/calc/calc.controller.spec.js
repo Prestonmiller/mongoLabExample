@@ -53,7 +53,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name = "B";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "B"}
+            {credits: 5, grade: "B"}
         ];
         scope.makeGPA();
         expect(scope.calc()).toBe(3.0);
@@ -63,7 +63,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name = "C";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "C"}
+            {credits: 5, grade: "C"}
         ];
         scope.makeGPA();
         expect(scope.calc()).toBe(2.0);
@@ -73,7 +73,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name =  "D";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "D"}
+            {credits: 5, grade: "D"}
         ];
         scope.makeGPA();
         expect(scope.calc()).toBe(1.0);
@@ -83,7 +83,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name = "F";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "F"}
+            {credits: 5, grade: "F"}
         ];
         scope.makeGPA();
         expect(scope.calc()).toBe(0.0);
@@ -130,7 +130,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name = "A";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "A"}
+            {credits: 5, grade: "A"}
         ];
         scope.makeGPA();
         expect(scope.color()).toBe("good");
@@ -139,7 +139,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name ="C";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "C"}
+            {credits: 5, grade: "C"}
         ];
         scope.makeGPA();
         expect(scope.color()).toBe("okay");
@@ -149,7 +149,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name ="F";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "F"}
+            {credits: 5, grade: "F"}
         ];
         scope.makeGPA();
         expect(scope.color()).toBe("bad");
@@ -159,7 +159,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name =  "A";
         scope.credits= 5;
         scope.data = [
-            {credit: 5, grade: "A"}
+            {credits: 5, grade: "A"}
         ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("4!");
@@ -169,7 +169,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name =  "B";
         scope.credits= 5;
         scope.data = [
-            {credit: 5, grade: "B"}
+            {credits: 5, grade: "B"}
         ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("3!");
@@ -179,7 +179,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name =  "C";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "C"}
+            {credits: 5, grade: "C"}
         ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("2!");
@@ -189,7 +189,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name =  "D";
         scope.credits = 5;
         scope.data = [
-            {credit: 5, grade: "D"}
+            {credits: 5, grade: "D"}
         ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("1!");
@@ -199,7 +199,7 @@ describe('Testing controller: calcCtrl', function(){
         scope.grade = scope.name = "F";
         scope.credits =  5;
         scope.data = [
-            {credit: 5, grade: "F"}
+            {credits: 5, grade: "F"}
         ];
         scope.makeGPA();
         expect(scope.getGPA()).toBe("0!");
@@ -207,10 +207,10 @@ describe('Testing controller: calcCtrl', function(){
 
     it("should be 4.0", function(){
         scope.data = [
-            {credit: 5, grade: "A"},
-            {credit: 6, grade: "A"},
-            {credit: 2, grade: "A"},
-            {credit: 4, grade: "A"}
+            {credits: 5, grade: "A"},
+            {credits: 6, grade: "A"},
+            {credits: 2, grade: "A"},
+            {credits: 4, grade: "A"}
         ];
         scope.processGrades();
         console.log(scope.numerator+" "+scope.denomonator);
@@ -219,7 +219,7 @@ describe('Testing controller: calcCtrl', function(){
 
     it("should be 3.0", function(){
         scope.data = [
-            {credit: 5, grade: "B"}
+            {credits: 5, grade: "B"}
         ];
         scope.processGrades();
         console.log(scope.numerator+" "+scope.denomonator);
@@ -228,7 +228,7 @@ describe('Testing controller: calcCtrl', function(){
 
     it("should be 2.0", function(){
         scope.data = [
-            {credit: 5, grade: "C"}
+            {credits: 5, grade: "C"}
         ];
         scope.processGrades();
         console.log(scope.numerator+" "+scope.denomonator);
@@ -236,7 +236,7 @@ describe('Testing controller: calcCtrl', function(){
     });
     it("should be 1.0", function(){
         scope.data = [
-            {credit: 5, grade: "D"}
+            {credits: 5, grade: "D"}
         ];
         scope.processGrades();
         console.log(scope.numerator+" "+scope.denomonator);
@@ -244,7 +244,7 @@ describe('Testing controller: calcCtrl', function(){
     });
     it("should be 0.0", function(){
         scope.data = [
-            {credit: 5, grade: "F"}
+            {credits: 5, grade: "F"}
         ];
         scope.processGrades();
         console.log(scope.numerator+" "+scope.denomonator);
