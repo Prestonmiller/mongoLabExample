@@ -20,6 +20,7 @@ angular.module("appModule")
         if($scope.validate()) {
 
             var data =  $scope.submit();
+            $scope.data = data;
             if($scope.data.length != 0){
                 $scope.makeMessage();
             }
